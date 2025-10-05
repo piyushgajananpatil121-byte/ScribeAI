@@ -1,0 +1,41 @@
+{
+  "name": "HandwritingGeneration",
+  "type": "object",
+  "properties": {
+    "style_name": {
+      "type": "string",
+      "description": "The name of the chosen handwriting style"
+    },
+    "pen_color": {
+      "type": "string",
+      "description": "The description of the chosen ink color"
+    },
+    "paper_style": {
+      "type": "string",
+      "description": "The description of the chosen paper style"
+    },
+    "page_size": {
+      "type": "string",
+      "description": "The paper size (A4, Letter, A5)"
+    },
+    "density": {
+      "type": "string",
+      "description": "Writing density (spacious, normal, compact)"
+    },
+    "input_text": {
+      "type": "string",
+      "description": "Text that was converted to handwriting"
+    },
+    "generated_image_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "URLs of the generated handwriting image pages"
+    }
+  },
+  "required": [
+    "input_text",
+    "style_name"
+  ]
+}
