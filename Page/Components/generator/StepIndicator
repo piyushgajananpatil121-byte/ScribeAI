@@ -1,0 +1,41 @@
+
+import React from "react";
+import { Check } from "lucide-react";
+
+const steps = [
+  { number: 1, title: "Choose Style" },
+  { number: 2, title: "Enter Text" },
+  { number: 3, title: "Generate" }
+];
+
+export default function StepIndicator({ currentStep }) {
+  return (
+    <div className="flex items-center justify-center gap-4 mb-12">
+      {steps.map((step, index) => (
+        <React.Fragment key={step.number}>
+          <div className="flex flex-col items-center gap-2">
+            <div className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold transition-all duration-300 ${
+              currentStep > step.number 
+                ? 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/30' 
+                : currentStep === step.number 
+                ? 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/30 scale-110' 
+                : 'bg-slate-100 text-slate-400'
+            }`}>
+              {currentStep > step.number ? <Check className="w-5 h-5" /> : step.number}
+            </div>
+            <span className={`text-sm font-medium transition-colors ${
+              currentStep >= step.number ? 'text-slate-900' : 'text-slate-400'
+            }`}>
+              {step.title}
+            </span>
+          </div>
+          {index < steps.length - 1 && (
+            <div className={`w-16 h-1 rounded-full transition-all duration-300 ${
+              currentStep > step.number ? 'bg-gradient-to-r from-indigo-500 to-purple-600' : 'bg-slate-200'
+            }`} />
+          )}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
